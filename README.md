@@ -47,6 +47,7 @@
         Return last index of a string inside another string, from position int. (`indexOf(), and lastIndexOf() return -1 if the text is not found`)
         - **search()**: searches a string for a specified value and returns the position of the match.
         <br>
+        
         > **Extracting String Parts**: <br>
             There are 3 methods for extracting a part of a string: <br>
             `slice(start, end)` slice out a portion of a string from position start to position  end.<br>
@@ -85,6 +86,7 @@
 - Null: `biến có giá trị là null (value null)`.
 - Undefined: `biến không có giá trị (no value)`, `biến chưa được định nghĩa`.
 3. Conditional Statement: `like C++ :))`
+
 4. Operators:
 - Arithmetic Operators: `+ - * / % ++ --`
 - Assignment Operators: `= += -= *= /= %=`
@@ -253,27 +255,114 @@
     ___
     Finding HTML Elements: 
     > Methods:
-    - **getElementByID("`id`")**:
+    - **getElementById("`id`")**:
     - **getElementByClassName("`class`")**:
     - **getElementByTagName("`tag-name`")**:
     >Query Slector: use CSS selector to select HTML elements
     - **querySelector()**:
     - **querySelectorAll()**:
-
-
+    ___
+    Changing HTML Elements
     > Properties:
-    - **innerHTML**
+    - **innerHTML** = new html content
+    - **attribute** = new value
+    - **style.property**  = new style
 
+    >Methods:
+    - **setAttribute(attribute, value)**
 
+    ___
+    Events:
+    - **button.onclick()**
+    - **button.addEventListener('click', function{})**
+    >`onchange`:	    An HTML element has been changed <br>
+    `onclick`	:    The user clicks an HTML element<br>
+    `onmouseover`:	The user moves the mouse over an HTML element<br>
+    `onmouseout`:	The user moves the mouse away from an HTML element<br>
+    `onkeydown`	 :   The user pushes a keyboard key<br>
+    `onload`	  :  The browser has finished loading the page<br>
+
+    ___
+    Add and remove Classes from HTML elements:
+    >Properties:
+    - **classList**:
+
+    >Methods:
+    - **add('className')**
+
+    => Ứng dụng vào việc làm sidebar.
+    ___
+    Get Elements Styles Values:
+    - 2 ways:<br>
+        + Inline Styles: `selectedElement.style.{inline-style-property}` 
+        + CSS file: `window.getComputedStyle(selectedElement).{style-property}`
+
+    > var btn = document.getElementById("btn-click") <br>
+    //console.log(color)<br>
+    btn.onclick = function(){<br>
+        var color = document.getElementById("idColor").value<br>
+        console.log(color)<br>
+        color = '#'+color;<br>
+        console.log(color)<br>
+        document.body.style.backgroundColor = color;<br>
+    }<br>
+
+    ___
+    Form Events: <br>
+    - **onblur**:	Fires the moment that the element loses focus
+        >Ex:<br>
+
+    - **onchange**:	Fires the moment when the value of the element is changed
+    - **oncontextmenu**:	Script to be run when a context menu is triggered
+    - **onfocus**:	Fires the moment when the element gets focus
+    - **oninput**:	Script to be run when an element gets user input
+    - **oninvalid**:	Script to be run when an element is invalid
+    - **onreset**:	Fires when the Reset button in a form is clicked
+    - **onsearch**:	Fires when the user writes something in a search field (for <input="search">)
+    - **onselect**:	Fires after some text has been selected in an element
+    - **onsubmit**:	Fires when a form is submitted
+    ___
+    Keyboard Events:
+    - **onkeydown**	Fires when a user is pressing a key
+    - **onkeypress**	Fires when a user presses a key
+    - **onkeyup**	Fires when a user releases a key
+    ___
+    Mouse Events:
+    - **onclick**	Fires on a mouse click on the element
+    - **ondblclick**	Fires on a mouse double-click on the element
+    - **onmousedown**	Fires when a mouse button is pressed down on an element
+    - **onmousemove**	Fires when the mouse pointer is moving while it is over an element
+    - **onmouseout**	Fires when the mouse pointer moves out of an element
+    - **onmouseover**	Fires when the mouse pointer moves over an element
+    - **onmouseup**	Fires when a mouse button is released over an element
+    - **onmousewheel**	Deprecated. Use the onwheel attribute instead
+    - **onwheel**	Fires when the mouse wheel rolls up or down over an element
+    ___
+    Create HTML Elements: <br>
+    Code:<br>
+    ```
+    var list = document.getElementById('todo-list'); //lấy node cha 
+    var btnAdd = document.getElementById('add-item'); //lấy button
+    btnAdd.addEventListener('click', function(){
+        var newListElement = document.createElement('li'); //tạo thẻ li
+        var textNode = document.createTextNode('List Item 3'); //tạo text 
+        newListElement.appendChild(textNode); //thêm text cho thẻ li
+        newListElement.id = 'item3';//thêm id cho thẻ li
+        list.appendChild(newListElement); //thêm thẻ li làm con của node cha ban đầu
+    }) 
+    ```
     
 
-
-
-    
-
-
-
-    
-
-
-
+10. Browser Object Model: <br>
+    - window
+        - document:
+        - history:
+            > **Method**: <br>
+                - back(): load the previous page <br>
+                - forward(): load the next page
+        - location:
+            > Get the detail of the current page address, can also redirect the browser to a new page in the same browser tab.
+        - screen:
+            >width, height, availbleWidth, availbleHeight, colorDept, pixelDept, ...
+        - navigator:
+            >Information about browser
